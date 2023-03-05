@@ -504,8 +504,8 @@ func (b *Bitcask) runGC() (err error) {
 // each key. If the function returns an error, no further keys are processed
 // and the error is returned.
 func (b *Bitcask) Fold(f func(key []byte) error) (err error) {
-	b.mu.RLock()
-	defer b.mu.RUnlock()
+	// b.mu.RLock()
+	// defer b.mu.RUnlock()
 
 	b.trie.ForEach(func(node art.Node) bool {
 		if err = f(node.Key()); err != nil {
